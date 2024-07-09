@@ -1,7 +1,7 @@
 //import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //import DepartmentList from './assets/DepartmentalList';
-import UserForm from './assets/userForm'; // Make sure the import path and filename casing match
+import UserForm from './assets/userForm'; 
 import SecondPage from './assets/SecondPage';
 
 const App = () => {
