@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import axios from 'axios';
 
@@ -20,9 +20,11 @@ const DataTable = () => {
         setLoading(false);
       })
       .catch(err => {
+        console.error('Failed to fetch posts:', err);
         setError('Failed to fetch posts');
         setLoading(false);
       });
+      
   }, []);
 
   const columns: GridColDef[] = [
@@ -41,7 +43,8 @@ const DataTable = () => {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={posts} columns={columns} pageSize={5} checkboxSelection />
+    <DataGrid rows={posts} columns={columns} checkboxSelection />
+
     </div>
   );
 };
