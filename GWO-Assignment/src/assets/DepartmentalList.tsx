@@ -3,14 +3,21 @@ import { List, ListItem, ListItemText, Collapse, Checkbox, ListItemIcon } from '
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 const departmentData = [
-  {
-    name: 'HR',
-    subDepartments: ['Recruitment', 'Payroll'],
-  },
-  {
-    name: 'IT',
-    subDepartments: ['Development', 'Support'],
-  },
+    {
+        "department": "customer_service",
+        "sub_departments": [
+          "support",
+          "customer_success"
+        ]
+      },
+      {
+        "department": "design",
+        "sub_departments": [
+          "graphic_design",
+          "product_design",
+          "web_design"
+        ]
+      }
 ];
 
 const DepartmentList = () => {
