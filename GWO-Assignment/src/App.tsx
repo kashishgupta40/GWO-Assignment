@@ -1,12 +1,19 @@
 import React from 'react';
-import DepartmentList from './assets/DepartmentalList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import DepartmentList from './assets/DepartmentalList';
+import UserForm from './assets/userForm'; // Make sure the import path and filename casing match
+import SecondPage from './assets/SecondPage';
 
 const App = () => {
   return (
-    <div>
-      <DepartmentList />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<UserForm />} />
+        <Route path="/second-page" element={<SecondPage />} />
+      </Routes>
+    </Router>
   );
 };
 
 export default App;
+

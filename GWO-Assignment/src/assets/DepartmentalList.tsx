@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { List, ListItem, ListItemText, Collapse, Checkbox, ListItemIcon } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
-interface Department {
-  name: string;
-  subDepartments: string[];
-}
-
-const departments: Department[] = [
-  { name: 'HR', subDepartments: ['Recruitment', 'Payroll'] },
-  { name: 'IT', subDepartments: ['Development', 'Support'] },
+const departmentData = [
+  {
+    name: 'HR',
+    subDepartments: ['Recruitment', 'Payroll'],
+  },
+  {
+    name: 'IT',
+    subDepartments: ['Development', 'Support'],
+  },
 ];
 
 const DepartmentList = () => {
@@ -17,20 +18,20 @@ const DepartmentList = () => {
   const [selected, setSelected] = useState<Record<string, boolean>>({});
 
   const handleToggle = (name: string) => {
-    setOpen(prevState => ({ ...prevState, [name]: !prevState[name] }));
+    setOpen((prevState) => ({ ...prevState, [name]: !prevState[name] }));
   };
 
   const handleSelect = (name: string, isSub: boolean = false) => {
-    setSelected(prevState => {
+    setSelected((prevState) => {
       const newState = { ...prevState, [name]: !prevState[name] };
 
       if (!isSub) {
-        departments.find(dept => dept.name === name)?.subDepartments.forEach(sub => {
+        departmentData.find((dept) => dept.name === name)?.subDepartments.forEach((sub) => {
           newState[sub] = newState[name];
         });
       } else {
-        const parent = departments.find(dept => dept.subDepartments.includes(name))?.name;
-        if (parent && departments.find(dept => dept.name === parent)?.subDepartments.every(sub => newState[sub])) {
+        const parent = departmentData.find((dept) => dept.subDepartments.includes(name))?.name;
+        if (parent && departmentData.find((dept) => dept.name === parent)?.subDepartments.every((sub) => newState[sub])) {
           newState[parent] = true;
         } else if (parent) {
           newState[parent] = false;
@@ -43,7 +44,7 @@ const DepartmentList = () => {
 
   return (
     <List>
-      {departments.map(dept => (
+      {departmentData.map((dept) => (
         <React.Fragment key={dept.name}>
           <ListItem button onClick={() => handleToggle(dept.name)}>
             <ListItemIcon>
@@ -60,7 +61,7 @@ const DepartmentList = () => {
           </ListItem>
           <Collapse in={open[dept.name]} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {dept.subDepartments.map(sub => (
+              {dept.subDepartments.map((sub) => (
                 <ListItem key={sub} button sx={{ pl: 4 }}>
                   <ListItemIcon>
                     <Checkbox
