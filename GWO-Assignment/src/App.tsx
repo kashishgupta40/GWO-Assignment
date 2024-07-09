@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import DepartmentList from './DepartmentalList.tsx';
+import DepartmentList from './assets/DepartmentalList';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <DepartmentList />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const App = () => {
+  return (
+    <div>
+      <DepartmentList />
+    </div>
+  );
+};
 
 export default App;

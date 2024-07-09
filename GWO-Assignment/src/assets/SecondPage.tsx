@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SecondPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userDetails = localStorage.getItem('userDetails');
     if (!userDetails) {
-      history.push('/');
       alert('You must enter your details before accessing this page.');
+      navigate('/');
     }
-  }, [history]);
+  }, [navigate]);
 
   return (
     <div>
